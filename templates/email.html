@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email Input</title>
+  <style>
+    /* CSS for the email input */
+    .email-input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    /* CSS for the submit button */
+    .submit-btn {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* CSS for hover effect on the submit button */
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<h3 style="text-align: center">Plese give me an email to notify you about blocked abusers.</h3>
+    <h4 style="text-align: center">The process may take some time, leave the abusers to us &#9749</h4>
+<div style="display: flex; justify-content: center">
+
+  <form action="/detect_abuser" method="post"> <!-- Replace "/submit" with the appropriate URL for form submission -->
+    <input type="email" name="email" class="email-input" placeholder="Enter your email" required>
+    <input type="submit" value="Submit" class="submit-btn">
+  </form>
+</div>
+
+</body>
+</html>

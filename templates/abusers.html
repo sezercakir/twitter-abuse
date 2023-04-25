@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blocked Abusers</title>
+    <style>
+        /* CSS styles for list items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #AED6F1 ;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: center;
+        }
+
+        .url {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>My List:</h1>
+    <ul>
+        {% for item in my_list %}
+        <li>
+            <div class="list-item">
+                <div style="margin: 0 30px;">{{ item[0] }}</div>
+                <a style="margin: 0 10px;" class="url" href="{{ item[2] }}" target="_blank">{{ item[1] }}</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

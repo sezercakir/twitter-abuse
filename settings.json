@@ -1,0 +1,71 @@
+
+{
+   "tokens": {
+      "api_key":"ZM4VuKpfUruWaq9vvRA7yxOEC",
+      "api_key_secret": "ByJshGneey5s9fd1GzEH8dbjLqp49EEniygz49ASKMcd9rdeGo",
+      "bearer_token": "AAAAAAAAAAAAAAAAAAAAAAT3mgEAAAAA%2Fk9ajPKcW9Rl%2F4XQYJiPq9a2iRs%3DTNoasLSKLubPBun8RNmoYP455PS8rt05n3i6LdMTZ0CdpRNtTz",
+      "access_token": "1258076924708106241-G5mB3H2QNhyyRy3fxj7JrzvV9LQODb",
+      "access_token_secret": "6O2EIKX79HG4yjC3cxkUUZB6XXtbu0ImsY5RCkqOm4up7"
+   },
+   "trends": {
+      "target_location": "Turkey",
+      "woeid": null,
+      "test": false ,
+      "start_now": true,
+      "start_time": "2.12.22 14:20:00",
+      "time_inc_hours": 5,
+      "time_inc_minutes": 0,
+      "time_inc_days": 0,
+      "end_time": "22.04.23 20:00:00"
+   },
+   "tweets": {
+      "expansions": ["author_id", "entities.mentions.username","attachments.media_keys", "attachments.poll_ids", "referenced_tweets.id"],
+      "max_results": 100,
+      "media_fields": ["media_key","preview_image_url","url", "type"],
+      "next_token": "None",
+      "place_fields": ["id", "full_name", "country", "country_code", "geo", "place_type", "contained_within"],
+      "poll_fields": ["duration_minutes","end_datetime","id","options","voting_status"],
+      "since_id" : "None",
+      "sort_order": "recency",
+      "tweet_fields": ["entities","created_at", "text", "attachments", "lang","geo", "possibly_sensitive", "source", "context_annotations"],
+      "until_id": "None",
+      "user_fields": ["id","name", "url","username", "location", "verified", "description", "profile_image_url", "entities"],
+      "user_auth": false,
+      "api": {
+         "query_parameters": " -is:retweet -is:reply -has:media",
+         "lang": "lang:tr",
+         "time_inc_minutes": 2,
+         "time_inc_hour": 0,
+         "time_inc_day": 0,
+         "time_inc_seconds": 0,
+         "start_before_day": 0,
+         "start_before_hour": 12,
+         "start_before_minutes": 0,
+         "start_before_seconds": 0,
+         "tweet_count": 1200000
+      },
+      "saved_tw_object": {
+         "text": true,
+         "tw_id": true,
+         "author_id": true,
+         "created_at": true
+      },
+      "lower_bound_tw_num": 200
+   },
+   "data": {
+      "excel_node_list_upper_bound": 2,
+      "threshold_num_tweets": 200,
+      "total_num_tweets": null,
+      "target_num_hashtag": null,
+      "maks_tw_per_hashtag": null
+   },
+   "abuser_detection": {
+      "same_tweet_upper_bound": 1,
+      "Same_tweet_hour_time_difference_bound": 1,
+      "selected_candidate_num_upper_bound": 100
+   },
+   "bertopic": {
+      "language": "turkish"
+   }
+}
+
