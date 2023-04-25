@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/tw_flask.iml" filepath="$PROJECT_DIR$/.idea/tw_flask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/twitter-abuser.iml" filepath="$PROJECT_DIR$/.idea/twitter-abuser.iml" />
     </modules>
   </component>
 </project>
