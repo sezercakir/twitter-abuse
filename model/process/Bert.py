@@ -12,7 +12,7 @@ class Bert(Settings):
     def __init__(self):
         super().__init__()
         self.abuser_from_selection2 = None
-        self.stop_words_tr = get_stop_words(self.bertopic_lang)
+        self.stop_words_tr = get_stop_words()
         self.abuser_candidates_df = None
 
     def construct_graph(self, topics, one_frame, df_all):
@@ -31,7 +31,7 @@ class Bert(Settings):
         abuser_candidates = sorted(degree_dict, key=degree_dict.get, reverse=True) \
             [num_topics:self.selected_candidate_num_upper_bound]
 
-        self.abuser_candidates_df = df_all.loc[(one_frame['tw_id'].isin(abuser_candidates)) &
+        self.abuser_candidates_df = one_frame.loc[(one_frame['tw_id'].isin(abuser_candidates)) &
                                                (one_frame['abuser'] == False)]
 
     def detect_abuser_selection2(self):

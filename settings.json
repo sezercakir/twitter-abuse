@@ -1,11 +1,11 @@
 
 {
    "tokens": {
-      "api_key":"ZM4VuKpfUruWaq9vvRA7yxOEC",
-      "api_key_secret": "ByJshGneey5s9fd1GzEH8dbjLqp49EEniygz49ASKMcd9rdeGo",
-      "bearer_token": "AAAAAAAAAAAAAAAAAAAAAAT3mgEAAAAA%2Fk9ajPKcW9Rl%2F4XQYJiPq9a2iRs%3DTNoasLSKLubPBun8RNmoYP455PS8rt05n3i6LdMTZ0CdpRNtTz",
-      "access_token": "1258076924708106241-G5mB3H2QNhyyRy3fxj7JrzvV9LQODb",
-      "access_token_secret": "6O2EIKX79HG4yjC3cxkUUZB6XXtbu0ImsY5RCkqOm4up7"
+      "api_key":"pQc6HG75uema8lQ8rPWEH657K",
+      "api_key_secret": "HE3a80YDPqv26RdrAYXymGIEib96sYGQN8CkQMJCZdHOGiMVZZ",
+      "bearer_token": "AAAAAAAAAAAAAAAAAAAAAPP4nAEAAAAAePp3GaToa0xWKbkXKRzXMuJgKII%3DOMdXekQ1Kyb4UG07UnUfc77FgC94IZTk6CeLMv28bEtOpTZpCA",
+      "access_token": "1258076924708106241-pDGd5kR9OZIFdURtVw48T8PGkknARr",
+      "access_token_secret": "sR0LeGH7xlMNpouQwpCP7q8rMgvvinNrJrE9m5ReQNK67"
    },
    "trends": {
       "target_location": "Turkey",

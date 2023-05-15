@@ -2,10 +2,24 @@
 <html>
 <head>
     <title>Email Template</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            padding: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello from Flask!</h1>
-    <p>This is an example email sent from a Flask app.</p>
-    <p>{{ custom_message }}</p>
+    <h1>Hello from Tw Abuser App</h1>
+    <p>We processed your request that sent at {{ date }} and found users that are belowed. They are blocked from yoru account.</p>
+    <p>Have a nice twitter stream &#9749;</p>
+    {% for user in users %}
+    <p>{{ user['name'] }} {{ user['username'] }} ({{ user['user_id'] }}) - <a href="{{ user['profile_url'] }}">View Profile</a></p>
+    {% endfor %}
+
 </body>
 </html>

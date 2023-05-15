@@ -12,6 +12,7 @@ app.config['MAIL_PASSWORD'] = 'hdhkocaljelunwoc'  # Update with your email passw
 
 mail = Mail(app)
 
+
 @app.route('/send_email', methods=['GET', 'POST'])
 def send_email():
     # Render email template
@@ -19,10 +20,15 @@ def send_email():
     email_content = render_template('email_template.html', custom_message=custom_message)
 
     # Create email message
-    msg = Message('Test Email', sender='szrckrrr@gmail.com', recipients=['cakirta18@itu.edu.tr'])  # Update sender and recipients
+    msg = Message('Test Email', sender='szrckrrr@gmail.com',
+                  recipients=['cakirta18@itu.edu.tr'])  # Update sender and recipients
     msg.html = email_content
 
     # Send email
     mail.send(msg)
 
     return 'Email sent!'
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

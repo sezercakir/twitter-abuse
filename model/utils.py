@@ -1,13 +1,13 @@
-import json
-import os
-from enum import Enum
-from pathlib import Path
-from typing import re
 
+from enum import Enum
+import re
 import nltk
 import numpy as np
 from nltk import word_tokenize
 from nltk.corpus import stopwords
+
+nltk.download('stopwords')
+nltk.download('punkt')
 
 """{
    "tokens": {
@@ -77,11 +77,8 @@ from nltk.corpus import stopwords
    }
 }"""
 
-def get_stop_words(lang):
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    stop_words_tr = stopwords.words(lang)
-
+def get_stop_words():
+    stop_words_tr = stopwords.words("turkish")
     with open('turkce-stop-words.txt', encoding="utf-8") as f:
         lines = f.read().splitlines()
 
@@ -89,8 +86,9 @@ def get_stop_words(lang):
     # Strips the newline character
     for line in lines:
         new_words.append(line)
-
+    
     stop_words_tr.extend(new_words)
+
     return np.unique(np.array(stop_words_tr)).tolist()
 
 

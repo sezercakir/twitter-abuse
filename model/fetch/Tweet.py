@@ -72,8 +72,9 @@ class Twitter(Settings):
 
         query = h_tag + self.tweet_api_query_parameters
         tweet_keys = ['text', 'tw_id', 'author_id', 'created_at']
-
-        while curr_time >= finish_time:
+        i = 0 #TODO delete i
+        print(h_tag)
+        while curr_time >= finish_time and i < 10:
             pause.seconds(1)
             returned_tweets = self.tw_api_client.search_recent_tweets(query=query,
                                                                       end_time=curr_time,
@@ -86,7 +87,8 @@ class Twitter(Settings):
                                                                       max_results=self.tweet_max_results,
                                                                       expansions=self.tweet_expansion
                                                                       )
-
+            print(i)
+            i+=1
             curr_time -= timedelta(days=self.tweet_api_time_inc_day,
                                    hours=self.tweet_api_time_inc_hour,
                                    minutes=self.tweet_api_time_inc_minutes,
@@ -108,9 +110,9 @@ class Twitter(Settings):
         # add abuser column as completely not abuser
         abuser_list = [False] * df.shape[0]
         df['abuser'] = abuser_list
-
+        print("End Hashtag")
         if df.shape[0] > self.lower_bound_tw_num:
-            print(h_tag, df.shape[0])
+
             ################ ! ###################
             self.detect_abuser_selection1(df)
             ################ ! ###################

@@ -56,7 +56,8 @@ class Settings:
         # bert settings
         self.bertopic_lang = self.json_file['bertopic']['language']
 
-    def read_settings_json(self):
+    @classmethod
+    def read_settings_json(cls):
         """
        Read json file return as dict
        :return:    json_file
