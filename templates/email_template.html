@@ -14,11 +14,11 @@
     </style>
 </head>
 <body>
-    <h1>Hello from Tw Abuser App</h1>
-    <p>We processed your request that sent at {{ date }} and found users that are belowed. They are blocked from yoru account.</p>
+    <h1>Hi {{ user }} Welcome to Twitter Abuser Detection App</h1>
+    <p>We processed your request that sent at {{ date }} and found users taht are listed in below. We'd like to block/mute them all for you, but after Elon that's not possible.</p><span style='font-size:100px;'>&#129297;</span>
     <p>Have a nice twitter stream &#9749;</p>
     {% for user in users %}
-    <p>{{ user['name'] }} {{ user['username'] }} ({{ user['user_id'] }}) - <a href="{{ user['profile_url'] }}">View Profile</a></p>
+    <p>{{ user['name'] }} - {{ user['username'] }} - <a href="https://twitter.com/{{ user['username'] }}">View Profile</a></p>
     {% endfor %}
 
 </body>

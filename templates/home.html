@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <style>
 /* Twitter button styles */
 .twitter-btn {
@@ -35,6 +37,19 @@
  display: flex;
     justify-content: center;
 }
+.main_menu_1{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+      margin: 0 auto;
+}
+
+.main_menu_2{
+    display: flex;
+    justify-content: center;
+    width: 70%;
+      margin: 0 auto;
+}
 
 .btn-icon {
   display: inline-block;
@@ -52,10 +67,56 @@
 </div>
 
 <div class="main_menu">
-    <h3>This project ...</h3>
+    <h3>This project aims to provide better twitter stream for user.</h3>
+</div>
+<div class="main_menu_1">
+    <h4>Twitter is by far the most used social network today. Countless bot accounts have been created on a network where a post receives millions of interactions within seconds. And when real users, who are no different from thousands of bot accounts, are added to this, it negatively affects our use of twitter.</h4>
+</div>
+<div class="main_menu_2">
+    <h4>After signing in with the Twitter account registered in your browser, you authorize the project on behalf of your own account.
+        The current trending topics are pulled from the Twitter api and the tweets inside each trending topic are also pulled.
+        The resulting topic and tweets belonging to the topic are passed through the abuser detection algorithms and the Twitter user who uses the topic for other than its purpose is blocked on your behalf.
+        Example result can be shown below.
+    </h4>
+</div>
+<div class="main_menu_2">
+    <h5 class="main_menu_2">Topics: BayKemaldenArkeoSanataSöz, Ertuğrul Doğan, Trabzonspor, Trump, #Aile Markovic</h5></div>
+<div class="main_menu_2">
+     <h6>Tweet: #BizimÇocuklar 👏👏
+
+#Aile
+#AlparslanTürkeş
+#sonviraj
+#4Nisan1997
+Trabzon
+Ali Koç
+#GRAMALTIN
+#DOGE
+Yaş 89
+#Hatay
+Jesus
+#KamuAvukatınınSesiOlun
+Markovic
+Abdülkadir Ömür
+BayKemaldenArkeoSanataSöz
+Trump
+Ertuğrul Doğan
+Trabzonspor
+Kanal 3 </h6>
 </div>
 
+<div class="main_menu_2">
+    <h3 class="main_menu_2">Result: ABUSER</h3></div>
+
     <div class="center">
+         <img src="/static/algo_tw.png" alt="Algorithm">
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div class="center">
+
   <a href="/authorize" class="twitter-btn">
     <span class="btn-icon">
       <img src="/static/icons8-twitter-26.png" alt="Twitter Icon">
