@@ -27,7 +27,7 @@
       "poll_fields": ["duration_minutes","end_datetime","id","options","voting_status"],
       "since_id" : "None",
       "sort_order": "recency",
-      "tweet_fields": ["entities","created_at", "text", "attachments", "lang","geo", "possibly_sensitive", "source", "context_annotations"],
+      "tweet_fields": ["entities","created_at", "text", "attachments", "lang","geo", "possibly_sensitive", "source"],
       "until_id": "None",
       "user_fields": ["id","name", "url","username", "location", "verified", "description", "profile_image_url", "entities"],
       "user_auth": false,

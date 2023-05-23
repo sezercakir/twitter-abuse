@@ -1,4 +1,6 @@
 from datetime import datetime
+
+import tweepy
 from flask import Flask, request, redirect, render_template
 from flask_mail import Mail, Message
 from requests_oauthlib import OAuth1Session
@@ -51,59 +53,63 @@ def callback():
 
 def run_algorithm(target_mail, action):
     with app.app_context():
-        try:
+        while True:
+            try:
+                tw_app = Trend()
 
-            tw_app = Trend()
+                me = tw_app.twiter_obj.tw_api_client.get_me().data
+                ret = check_from_db(me['id'], me['username'], target_mail)
 
-            me = tw_app.twiter_obj.tw_api_client.get_me().data
-            ret = check_from_db(me['id'], me['username'], target_mail)
+                if ret[0] != RetValue.Success:
+                    raise EarlyRequestException(me['username'])
+                tw_app.get_trend_topics()
 
-            if ret[0] != RetValue.Success:
-                raise EarlyRequestException(me['username'])
-            tw_app.get_trend_topics()
+                tw_app.trends['trends'] = tw_app.trends['trends']
+                abusers_from_1 = tw_app.twiter_obj.read_tweets_from_trend(tw_app.trends['trends'], tw_app.trends['as_of'])
+                bert = Bert()
+                bert.construct_graph(tw_app.twiter_obj.frames_dict.keys(),
+                                     tw_app.twiter_obj.one_frame,
+                                     tw_app.twiter_obj.one_frame_with_orient)
 
-            tw_app.trends['trends'] = tw_app.trends['trends'] 
-            abusers_from_1 = tw_app.twiter_obj.read_tweets_from_trend(tw_app.trends['trends'], tw_app.trends['as_of'])
-            bert = Bert()
-            bert.construct_graph(tw_app.twiter_obj.frames_dict.keys(),
-                                 tw_app.twiter_obj.one_frame,
-                                 tw_app.twiter_obj.one_frame_with_orient)
+                abusers_from_2 = bert.detect_abuser_selection2()
+                abusers_from_bert = bert.apply_bertopic()
 
-            abusers_from_2 = bert.detect_abuser_selection2()
-            abusers_from_bert = bert.apply_bertopic()
+                ids = list(set(abusers_from_1 + abusers_from_2 + abusers_from_bert))
+                users = tw_app.twiter_obj.tw_api_client.get_users(ids=ids).data
 
-            ids = list(set(abusers_from_1 + abusers_from_2 + abusers_from_bert))
-            users = tw_app.twiter_obj.tw_api_client.get_users(ids=ids).data
+                '''
+                for user in users:
+                    if action == "block":
+                        tw_app.twitter_api.create_block(user_id=user.id)
+                    else:
+                        tw_app.twitter_api.create_mute(user_id=user.id)
+                '''
+                action = "Blocked" if action == "block" else "Muted"
+                msg = Message("Abusers Listed", sender="szrckrrr@gmail.com", recipients=[target_mail])
+                email_content = render_template('email_template.html', users=users,
+                                                date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user=me['name'])
+                msg.html = email_content
 
-            '''
-            for user in users:
-                if action == "block":
-                    tw_app.twitter_api.create_block(user_id=user.id)
-                else:
-                    tw_app.twitter_api.create_mute(user_id=user.id)
-            '''
-            action = "Blocked" if action == "block" else "Muted"
-            msg = Message("Abusers Listed", sender="szrckrrr@gmail.com", recipients=[target_mail])
-            email_content = render_template('email_template.html', users=users,
-                                            date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user=me['name'])
-            msg.html = email_content
-
-            # Send email
-            mail.send(msg)
-        except EarlyRequestException as e:
-            msg = Message("Unsuccessful Request", sender="szrckrrr@gmail.com", recipients=[target_mail])
-            email_content = render_template("email_template_fail.html", user=me['username'], hours=ret[1],
-                                            date=datetime.now(), minutes=ret[2], seconds=ret[3])
-            msg.html = email_content
-            mail.send(msg)
-        except Exception as e:
-            print(e)
-            msg = Message('Test Email', sender='szrckrrr@gmail.com',
-                          recipients=['cakirta18@itu.edu.tr'])  # Update sender and recipients
-            email_content = render_template('email_template_error.html', date=datetime.now())
-            msg.html = email_content
-            mail.send(msg)
-
+                # Send email
+                mail.send(msg)
+            except tweepy.errors.TwitterServerError as e:
+                continue
+            except EarlyRequestException as e:
+                msg = Message("Unsuccessful Request", sender="szrckrrr@gmail.com", recipients=[target_mail])
+                email_content = render_template("email_template_fail.html", user=me['username'], hours=ret[1],
+                                                date=datetime.now(), minutes=ret[2], seconds=ret[3])
+                msg.html = email_content
+                mail.send(msg)
+                break
+            except Exception as e:
+                print(e)
+                msg = Message('Unsuccessful Request', sender='szrckrrr@gmail.com',
+                              recipients=['cakirta18@itu.edu.tr'])  # Update sender and recipients
+                email_content = render_template('email_template_error.html', date=datetime.now())
+                msg.html = email_content
+                mail.send(msg)
+                break
+            break
 
 @app.route('/detect_abuser', methods=['POST'])
 def detect_abuser():
