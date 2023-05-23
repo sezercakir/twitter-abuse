@@ -50,11 +50,11 @@
          "author_id": true,
          "created_at": true
       },
-      "lower_bound_tw_num": 200
+      "lower_bound_tw_num": 100
    },
    "data": {
       "excel_node_list_upper_bound": 2,
-      "threshold_num_tweets": 200,
+      "threshold_num_tweets": 100,
       "total_num_tweets": null,
       "target_num_hashtag": null,
       "maks_tw_per_hashtag": null

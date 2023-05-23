@@ -110,5 +110,17 @@ def clean_text(x):
 class RetValue(Enum):
     TotalTweetCountIsEnough = 2,
     TotalTweetCountIsNotEnough = 3,
+    EarlyRequestFail = 5,
     Success = 0,
     Fail = 1
+
+
+class EarlyRequestException(Exception):
+
+    # Constructor or Initializer
+    def __init__(self, value):
+        self.value = value
+
+    # __str__ is to print() the value
+    def __str__(self):
+        return (repr(self.value))

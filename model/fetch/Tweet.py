@@ -22,7 +22,9 @@ class Twitter(Settings):
         self.one_frame_with_orient = None
         self.abusers_from_selection1 = None
         self.detected_abuser_num = 0
-        self.tw_api_client = tweepy.Client(bearer_token=self.bearer_token, wait_on_rate_limit=True)
+        self.tw_api_client = tweepy.Client(bearer_token=self.bearer_token, access_token=self.access_token,
+                                           access_token_secret=self.access_token_secret, consumer_key=self.api_key,
+                                           consumer_secret=self.api_key_secret, wait_on_rate_limit=True)
 
     def read_tweets_from_trend(self, trend_request_responses, as_of):
         """
@@ -74,7 +76,7 @@ class Twitter(Settings):
         tweet_keys = ['text', 'tw_id', 'author_id', 'created_at']
         i = 0 #TODO delete i
         print(h_tag)
-        while curr_time >= finish_time and i < 10:
+        while curr_time >= finish_time:
             pause.seconds(1)
             returned_tweets = self.tw_api_client.search_recent_tweets(query=query,
                                                                       end_time=curr_time,

@@ -23,6 +23,7 @@ class Trend(Settings):
         self.twiter_obj = Twitter()
         self.twitter_api = self.get_api()
 
+
     def get_api(self):
         auth = tweepy.OAuthHandler(self.api_key, self.api_key_secret)
         auth.set_access_token(self.access_token, self.access_token_secret)
