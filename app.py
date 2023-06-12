@@ -57,11 +57,11 @@ def run_algorithm(target_mail, action):
             try:
                 tw_app = Trend()
 
-                me = tw_app.twiter_obj.tw_api_client.get_me().data
-                ret = check_from_db(me['id'], me['username'], target_mail)
+                """me = tw_app.twiter_obj.tw_api_client.get_me().data
+                ret = check_from_db(me['id'], me['username'], target_mail)"""
 
-                if ret[0] != RetValue.Success:
-                    raise EarlyRequestException(me['username'])
+                """if ret[0] != RetValue.Success:
+                    raise EarlyRequestException(me['username'])"""
                 tw_app.get_trend_topics()
 
                 tw_app.trends['trends'] = tw_app.trends['trends']
@@ -87,7 +87,7 @@ def run_algorithm(target_mail, action):
                 action = "Blocked" if action == "block" else "Muted"
                 msg = Message("Abusers Listed", sender="szrckrrr@gmail.com", recipients=[target_mail])
                 email_content = render_template('email_template.html', users=users,
-                                                date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), user=me['name'])
+                                                date=datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                 msg.html = email_content
 
                 # Send email
@@ -95,13 +95,7 @@ def run_algorithm(target_mail, action):
             except tweepy.errors.TwitterServerError as e:
                 print(e)
                 continue
-            except EarlyRequestException as e:
-                msg = Message("Unsuccessful Request", sender="szrckrrr@gmail.com", recipients=[target_mail])
-                email_content = render_template("email_template_fail.html", user=me['username'], hours=ret[1],
-                                                date=datetime.now(), minutes=ret[2], seconds=ret[3])
-                msg.html = email_content
-                mail.send(msg)
-                break
+
             except Exception as e:
                 print(e)
                 msg = Message('Unsuccessful Request', sender='szrckrrr@gmail.com',
@@ -111,6 +105,7 @@ def run_algorithm(target_mail, action):
                 mail.send(msg)
                 break
             break
+
 
 @app.route('/detect_abuser', methods=['POST'])
 def detect_abuser():
@@ -131,3 +126,11 @@ if __name__ == '__main__':
 
 
 
+"""except EarlyRequestException as e:
+                msg = Message("Unsuccessful Request", sender="szrckrrr@gmail.com", recipients=[target_mail])
+                email_content = render_template("email_template_fail.html", user=me['username'], hours=ret[1],
+                                                date=datetime.now(), minutes=ret[2], seconds=ret[3])
+                msg.html = email_content
+                mail.send(msg)
+                break
+"""
