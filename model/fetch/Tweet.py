@@ -76,7 +76,7 @@ class Twitter(Settings):
         tweet_keys = ['text', 'tw_id', 'author_id', 'created_at']
         print(h_tag)
         tweet_count = 0
-        while curr_time >= finish_time:
+        while curr_time >= finish_time and tweet_count < 60:
             pause.seconds(2)
             returned_tweets = self.tw_api_client.search_recent_tweets(query=query,
                                                                       end_time=curr_time,
