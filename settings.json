@@ -1,11 +1,11 @@
 
 {
    "tokens": {
-      "api_key":"pQc6HG75uema8lQ8rPWEH657K",
-      "api_key_secret": "HE3a80YDPqv26RdrAYXymGIEib96sYGQN8CkQMJCZdHOGiMVZZ",
-      "bearer_token": "AAAAAAAAAAAAAAAAAAAAAPP4nAEAAAAAePp3GaToa0xWKbkXKRzXMuJgKII%3DOMdXekQ1Kyb4UG07UnUfc77FgC94IZTk6CeLMv28bEtOpTZpCA",
-      "access_token": "1258076924708106241-pDGd5kR9OZIFdURtVw48T8PGkknARr",
-      "access_token_secret": "sR0LeGH7xlMNpouQwpCP7q8rMgvvinNrJrE9m5ReQNK67"
+      "api_key":"VD34XT44eeYkQ4x5cOTgXRdZL",
+      "api_key_secret": "wE4gBtJ0VGkIanoAAhycXJ7OULowsxNMcbid2dTOcNaGAw7g3A",
+      "bearer_token": "AAAAAAAAAAAAAAAAAAAAAEqMoAEAAAAAEv6B%2Booe3UwTfEdCWsT0WbJRTiQ%3DMRT29ON0dkgmZC7Xrw8E5BU3HTSQI9bcWpcFkaIVANhRgIzN3Y",
+      "access_token": "4375117036-TBOudiAvdFA5ueU9Z6ekXWbCI0IIwZ8QrE7CeVq",
+      "access_token_secret": "Gse9Twgm2vu3dImKTVrFEKRfVrg7nWLNB7fAzS3IWNzaZ"
    },
    "trends": {
       "target_location": "Turkey",
@@ -34,12 +34,12 @@
       "api": {
          "query_parameters": " -is:retweet -is:reply -has:media",
          "lang": "lang:tr",
-         "time_inc_minutes": 2,
+         "time_inc_minutes": 4,
          "time_inc_hour": 0,
          "time_inc_day": 0,
          "time_inc_seconds": 0,
          "start_before_day": 0,
-         "start_before_hour": 12,
+         "start_before_hour": 10,
          "start_before_minutes": 0,
          "start_before_seconds": 0,
          "tweet_count": 1200000
