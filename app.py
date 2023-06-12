@@ -13,7 +13,7 @@ from model.Settings import Settings
 from model.process.Bert import Bert
 from model.utils import RetValue, EarlyRequestException
 
-callback_url = 'http://localhost:5000/email'
+callback_url = 'http://20.250.35.51:5000/email'
 session = dict()
 app = Flask(__name__)
 executor = ThreadPoolExecutor()
