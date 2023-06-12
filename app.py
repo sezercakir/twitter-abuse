@@ -93,6 +93,7 @@ def run_algorithm(target_mail, action):
                 # Send email
                 mail.send(msg)
             except tweepy.errors.TwitterServerError as e:
+                print(e)
                 continue
             except EarlyRequestException as e:
                 msg = Message("Unsuccessful Request", sender="szrckrrr@gmail.com", recipients=[target_mail])
@@ -126,4 +127,5 @@ def detect_abuser():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)
+
