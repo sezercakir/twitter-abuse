@@ -127,6 +127,7 @@ def detect_abuser():
 
 
 if __name__ == '__main__':
-    app.run(host='20.250.35.51', port=5000)
+    app.run(host='0.0.0.0', port=5000)
+
 
 
