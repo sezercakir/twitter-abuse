@@ -58,6 +58,8 @@ def check_from_db(user_id, user_name, target_email):
             seconds = int(remaining_seconds % 60)
             conn.close()
             return [RetValue.EarlyRequestFail, hours, minutes, seconds, current_datetime]
+        else:
+            return [RetValue.Success]
     else:
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 

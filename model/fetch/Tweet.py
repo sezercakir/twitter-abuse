@@ -74,10 +74,10 @@ class Twitter(Settings):
 
         query = h_tag + self.tweet_api_query_parameters
         tweet_keys = ['text', 'tw_id', 'author_id', 'created_at']
-        i = 0 #TODO delete i
         print(h_tag)
+        tweet_count = 0
         while curr_time >= finish_time:
-            pause.seconds(1)
+            pause.seconds(2)
             returned_tweets = self.tw_api_client.search_recent_tweets(query=query,
                                                                       end_time=curr_time,
                                                                       media_fields=self.tweet_media_fields,
@@ -89,8 +89,7 @@ class Twitter(Settings):
                                                                       max_results=self.tweet_max_results,
                                                                       expansions=self.tweet_expansion
                                                                       )
-            print(i)
-            i+=1
+
             curr_time -= timedelta(days=self.tweet_api_time_inc_day,
                                    hours=self.tweet_api_time_inc_hour,
                                    minutes=self.tweet_api_time_inc_minutes,
@@ -104,6 +103,9 @@ class Twitter(Settings):
                                 h_tag]
 
                 tweet_list_to_write.append(tweet_values)
+
+            tweet_count += 1
+            print(tweet_count)
 
         # whole tweets for one topic
         tweet_keys.append("Topic")

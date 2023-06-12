@@ -57,7 +57,7 @@ class Bert(Settings):
                 ratio = SequenceMatcher(None, text_tw, self.abuser_candidates_df['text'][j]).ratio()
                 if ratio > 0.94 and self.abuser_candidates_df['Topic'][i] == self.abuser_candidates_df['Topic'][j] and \
                         self.abuser_candidates_df['author_id'][i] == self.abuser_candidates_df['author_id'][j]:
-                    print("Abuser DETECTED 2", file=sys.stderr)
+
                     detected_abuser += 2
                     abusers.append(self.abuser_candidates_df['author_id'][i])
                     abusers.append(self.abuser_candidates_df['author_id'][j])
@@ -154,12 +154,13 @@ class Bert(Settings):
             nonzero_count = len(list(filter(lambda x: x != 0, topic_count_list)))
             max_topic_count = max(topic_count_list)
 
-            if max_topic_count == round(len(topic_count_list) / 2) or std_of_topic_count > 0.4:
+            if max_topic_count >= round(len(topic_count_list) / 2):
                 continue
-            # evenly distributed or almost evenly distributed -> abuser
-            if std_of_topic_count <= 0.4:
+
+            if std_of_topic_count < 0.44:
                 abuser_ids_from_topic.append(abuser_cand.id)
-            if abuser_cand.total_hub_topic_number - 1 < nonzero_count:
+
+            if abuser_cand.total_hub_topic_number*0.75 < nonzero_count:
                 abuser_ids_from_topic.append(abuser_cand.id)
 
         abuser_ids_from_topic = list(set(int(x) for x in abuser_ids_from_topic))
