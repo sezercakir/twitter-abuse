@@ -64,7 +64,7 @@ def run_algorithm(target_mail, action):
                     raise EarlyRequestException(me['username'])"""
                 tw_app.get_trend_topics()
 
-                tw_app.trends['trends'] = tw_app.trends['trends']
+                tw_app.trends['trends'] = tw_app.trends['trends'][:20]
                 abusers_from_1 = tw_app.twiter_obj.read_tweets_from_trend(tw_app.trends['trends'], tw_app.trends['as_of'])
                 bert = Bert()
                 bert.construct_graph(tw_app.twiter_obj.frames_dict.keys(),
