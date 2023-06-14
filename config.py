@@ -1,3 +1,0 @@
-import os
-TWITTER_CLIENT_ID = os.getenv('LcbD4IrAd7EZaPxfZ8X62dLxe')
-TWITTER_CLIENT_SECRET = os.getenv('wOmS49QXOFPhD2ufw5mKfYqXzEYVy3U7qVOuvvM4as5Y5qb7Ab')
