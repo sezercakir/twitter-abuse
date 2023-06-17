@@ -3,6 +3,42 @@
 The project aims to detect and state the trending tweets that abuse the trend topics and hashtags.
 Twitter *[Elevated Access](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
 level is used in this project. 
+
+## Algorithm
+- Get Trends
+- Get Tweets belonged each trend
+- Convert tweets data to graph.
+- Run detection algorithms on data
+  - Text Based <br> If the minimum three words in the tweet are in
+the top five tfidf scores in a topic suggested by
+BERTopic, this is not an abuser
+  - Topic Based <br>
+  If the standard deviation of the distribution of
+the topics of the tweet among the topics
+suggested by BERTopic is less than 0.44, it
+means that the topics are homogeneously
+distributed. This ensures that the real topics
+are almost equally distributed in different
+topics within the BERT, and the tweet's topics
+are interpreted as unrelated to each other. It
+is abuser. <br>
+  If the number of the tweet's topics is less than
+75% of the distribution in the BERTopic
+suggestions, it means that the tweet’s topics
+are very widely distributed in BERT and it is
+abuser. <br>
+  If the number of actual tweet topics in the
+BERTopic statement is greater than or equal
+to half of the total number of tweets, it is not
+an abuser. Topics are stacked on a BERT
+proposition.
+  - Send notifications email that contains abusers
+
+## Usage 
+Azure VM is used for deployment. It can run on your local with following command.
+```
+python app.py
+```
 ## Project Arguments
 
 Arguments stored in the settings.json [file](settings.json).
