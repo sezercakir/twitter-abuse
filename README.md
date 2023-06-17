@@ -1,4 +1,4 @@
-# Twitter Hashtag Abuse
+# Hastag Abuser Detection on Twitter
 
 The project aims to detect and state the trending tweets that abuse the trend topics and hashtags.
 Twitter *[Elevated Access](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api)
